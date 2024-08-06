@@ -48,7 +48,7 @@ class ContentsHandler():
         if not os.path.exists('results'):
             os.mkdir('results')
         plaintext_file_name = 'results/result-%s.txt' % datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
-        plaintext_file = open(plaintext_file_name,'a+')
+        plaintext_file = open(plaintext_file_name,'a+', encoding="utf-8")
 
         plaintext_file.write(keyword+'\n')
         for line in results:
