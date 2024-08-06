@@ -14,6 +14,7 @@ from library.utils.download import Downloader
 from library.utils.keywordsHandler import KeywordsHandler
 from library.utils.contentsHandler import ContentsHandler
 from concurrent.futures import ThreadPoolExecutor
+from library.utils.configHandler import config
 
 # keyword_handler.handle_by_nologin('''
 # protocol=="socks5" &&
@@ -36,9 +37,7 @@ contents_handler = ContentsHandler()
 
 
 def handler(i):
-    url = keyword_handler.handle_by_nologin('''
-            title="chatgpt"
-            ''', i)
+    url = keyword_handler.handle_by_nologin(config["search"]["content"], i)
     content =  downloader(url)
     contents_handler.get_contents_by_cssselect(content)
 
@@ -47,7 +46,7 @@ def handler(i):
 if __name__ == '__main__':
     pool = ThreadPoolExecutor(max_workers=5)
 
-    for i in range(10):
+    for i in range(int(config["search"]["page"])):
         pool.submit(handler,i)
     pool.shutdown()
 

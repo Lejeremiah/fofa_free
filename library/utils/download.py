@@ -14,6 +14,8 @@ import random
 import requests
 import logging
 
+from library.utils.configHandler import config
+
 '''
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36
 '''
@@ -90,7 +92,11 @@ class Downloader():
             proxies = None
 
         try:
-            response = requests.get(url=url,headers=headers,proxies=proxies)
+            cookies = {
+                "fofa_token": config['account']['fofa_token']
+            }
+
+            response = requests.get(url=url,headers=headers,proxies=proxies, cookies=cookies)
             html = response.text
             code = response.status_code
             if 500 <= code < 600 and num_retries > 0:
