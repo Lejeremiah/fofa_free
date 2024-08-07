@@ -6,6 +6,8 @@
 @Author  ：lms.jeremiah@gmail.com
 @Date    ：2024/07/29 18:36 
 '''
+import library.utils.log
+import logging
 
 from library.utils.download import Downloader
 from library.utils.keywordsHandler import KeywordsHandler
