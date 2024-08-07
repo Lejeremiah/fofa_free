@@ -53,3 +53,17 @@ class KeywordsHandler():
         final_url = base_url + '?qbase64=' + query_base64 + '&full=false&page_size=10'
         # print(final_url)
         return final_url
+    def handle_by_login(self,query,times:int):
+        base_url = 'https://fofa.info/result'
+
+        query = query.replace('\n',' ')
+        time_for_before = (datetime.datetime.now() + datetime.timedelta(days=-times)).strftime('%Y-%m-%d')
+        query = query + '&& before="' + time_for_before + '" '
+        time_for_after = (datetime.datetime.now() + datetime.timedelta(days=-times-1)).strftime('%Y-%m-%d')
+        query = query + '&& after="' + time_for_after + '" '
+        # print(query)
+
+        query_base64 = base64.b64encode(query.encode()).decode('utf-8')
+        final_url = base_url + '?qbase64=' + query_base64 + '&full=false&page_size=10'
+        # print(final_url)
+        return final_url

@@ -17,3 +17,10 @@ search:
     content: this is your fofa search grammar.
     page: this is number of pages that you want to search.
 ```
+
+### step 3:
+![img_v3_02dg_67b698a3-18e3-4580-b1b7-a714a45d9ecg.jpg](images%2Fimg_v3_02dg_67b698a3-18e3-4580-b1b7-a714a45d9ecg.jpg)
+![img.png](images%2Fimg.png)
+
+# 注意事项：
+- 本仓库仅用于合法合规用途，严禁用于违法违规用途。

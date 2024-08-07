@@ -16,37 +16,19 @@ from library.utils.contentsHandler import ContentsHandler
 from concurrent.futures import ThreadPoolExecutor
 from library.utils.configHandler import config
 
-# keyword_handler.handle_by_nologin('''
-# protocol=="socks5" &&
-# "Version:5" &&
-# "Method:No Authentication(0x00)" &&
-# country="CN"
-# ''',2)
-#
-# url = keyword_handler.handle_by_nologin('''
-#     app="ThinkPHP" &&
-#     body="__destruct" &&
-#     status_code="200"
-#     ''',i)
-
-
 downloader = Downloader()
 keyword_handler = KeywordsHandler()
-contents_handler = ContentsHandler()
-
-
+contents_handler = ContentsHandler(config["search"]["content"])
 
 def handler(i):
-    url = keyword_handler.handle_by_nologin(config["search"]["content"], i)
-    content =  downloader(url)
+    url = keyword_handler.handle_by_login(config["search"]["content"], i)
+    content = downloader(url)
     contents_handler.get_contents_by_cssselect(content)
-
-
 
 if __name__ == '__main__':
     pool = ThreadPoolExecutor(max_workers=5)
 
     for i in range(int(config["search"]["page"])):
-        pool.submit(handler,i)
+        pool.submit(handler, i)
     pool.shutdown()
 

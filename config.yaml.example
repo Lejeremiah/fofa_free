@@ -2,5 +2,5 @@ account:
   fofa_token: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 search:
-  content: body="章管家登录-公章在外防私盖"
-  page: 10
+  content: title="chatgpt"
+  page: 5

@@ -15,8 +15,15 @@ import urllib.parse as urlparse
 import logging
 
 class ContentsHandler():
-    def __init__(self):
+    def __init__(self, content: str):
         self.file_name = 'result'
+        if not os.path.exists('results'):
+            os.mkdir('results')
+
+        plaintext_file_name = 'results/result-%s.log' % datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
+        self.plaintext_file = open(plaintext_file_name, 'a+', encoding="utf-8")
+        self.plaintext_file.write(content + '\n')
+
     def get_contents_by_cssselect(self,html_string_and_code):
         results = []
 
@@ -44,17 +51,17 @@ class ContentsHandler():
         querys = urlparse.parse_qs(querys)
         qbase64 = querys.get('qbase64')[0]
         keyword = base64.b64decode(qbase64).decode('utf8').replace(' ', '')
+        keyword = keyword.split("&&before")[0]
 
-        if not os.path.exists('results'):
-            os.mkdir('results')
-        plaintext_file_name = 'results/result-%s.txt' % datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
-        plaintext_file = open(plaintext_file_name,'a+', encoding="utf-8")
 
-        plaintext_file.write(keyword+'\n')
+        # plaintext_file_name = 'results/result-%s.txt' % datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
+        # plaintext_file = open(plaintext_file_name,'a+', encoding="utf-8")
+
+        # plaintext_file.write(keyword+'\n')
         for line in results:
-            plaintext_file.write(line+'\n')
+            self.plaintext_file.write(line+'\n')
 
-        plaintext_file.close()
+        # self.plaintext_file.close()
 
 
 
