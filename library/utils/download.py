@@ -81,7 +81,7 @@ class Downloader():
 
     def download(self,url,headers,proxy=None,num_retries=2):
         # print("Downloading:",url)
-        logging.info("Downloading:"+url)
+        # logging.info("Downloading:"+url)
 
         if proxy:
             proxies = {

@@ -1,6 +1,6 @@
 account:
-  fofa_token: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  fofa_token: eyJhbGciOiJIUzUxMiIsImtpZCI6Ik5XWTVZakF4TVxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 search:
   content: title="chatgpt"
-  page: 5
+  page: 1

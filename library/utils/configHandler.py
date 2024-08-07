@@ -12,3 +12,5 @@ with open('config.yaml', 'r', encoding="utf-8") as yaml_file:
     config = yaml.safe_load(yaml_file)
 
 print(config['account']['fofa_token'])
+print(config['search']['content'])
+

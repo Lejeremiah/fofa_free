@@ -15,7 +15,7 @@ account:
 
 search:
     content: this is your fofa search grammar.
-    page: this is number of pages that you want to search.
+    page: this is number of pages that you want to search. There are 10 IPs per page.
 ```
 
 ### step 3:

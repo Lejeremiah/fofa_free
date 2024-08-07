@@ -20,10 +20,11 @@ class ContentsHandler():
         if not os.path.exists('results'):
             os.mkdir('results')
 
-        plaintext_file_name = 'results/result-%s.log' % datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
-        self.plaintext_file = open(plaintext_file_name, 'a+', encoding="utf-8")
+        self.plaintext_file_name = 'results/result-%s.txt' % datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
+        self.plaintext_file = open(self.plaintext_file_name, 'a+', encoding="utf-8")
         self.plaintext_file.write(content + '\n')
-
+    def destroy(self):
+        self.plaintext_file.close()
     def get_contents_by_cssselect(self,html_string_and_code):
         results = []
 
@@ -44,24 +45,14 @@ class ContentsHandler():
             # print(result)
             logging.info(result)
             results.append(result)
-
-        self.save_contents_by_plaintext(html_string_and_code['url'],results)
+        try:
+            self.save_contents_by_plaintext(html_string_and_code['url'],results)
+        except Exception as e:
+            logging.error('Failed to save contents')
+            logging.error(str(e))
     def save_contents_by_plaintext(self,url,results):
-        querys = urlparse.urlparse(url).query
-        querys = urlparse.parse_qs(querys)
-        qbase64 = querys.get('qbase64')[0]
-        keyword = base64.b64decode(qbase64).decode('utf8').replace(' ', '')
-        keyword = keyword.split("&&before")[0]
-
-
-        # plaintext_file_name = 'results/result-%s.txt' % datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
-        # plaintext_file = open(plaintext_file_name,'a+', encoding="utf-8")
-
-        # plaintext_file.write(keyword+'\n')
         for line in results:
             self.plaintext_file.write(line+'\n')
-
-        # self.plaintext_file.close()
 
 
 

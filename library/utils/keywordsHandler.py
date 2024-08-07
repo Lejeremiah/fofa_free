@@ -49,7 +49,7 @@ class KeywordsHandler():
         query = query + '&& after="' + time_for_after + '" '
         # print(query)
 
-        query_base64 = base64.b64encode(query.encode()).decode('utf-8')
+        query_base64 = base64.b64encode(query.encode("utf-8")).decode('utf-8')
         final_url = base_url + '?qbase64=' + query_base64 + '&full=false&page_size=10'
         # print(final_url)
         return final_url
