@@ -19,8 +19,14 @@ search:
 ```
 
 ### step 3:
+```angular2html
+python main.py
+```
+
+### step 4:
 ![img_v3_02dg_67b698a3-18e3-4580-b1b7-a714a45d9ecg.jpg](images%2Fimg_v3_02dg_67b698a3-18e3-4580-b1b7-a714a45d9ecg.jpg)
 ![img.png](images%2Fimg.png)
 
-# 注意事项：
+# 注意事项/Matters need attention:
 - 本仓库仅用于合法合规用途，严禁用于违法违规用途。
+- This warehouse is only used for legal and compliant purposes and is strictly prohibited from being used for illegal and irregular purposes.
